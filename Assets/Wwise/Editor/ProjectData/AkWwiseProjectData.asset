@@ -1,0 +1,481 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be16694460f9034bb0772aa3c5788e6, type: 3}
+  m_Name: AkWwiseProjectData
+  m_EditorClassIdentifier: 
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: f1dfc29235d0264a884fdceaec2d89ba
+    GuidInternal: 
+    m_lastTime: -8586464244006991884
+    List: []
+  AuxBusWwu:
+  - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: c947f112736b9f40881c844cace68f81
+    GuidInternal: 
+    m_lastTime: -8586427094617146871
+    List: []
+  BankWwu:
+  - PhysicalPath: SoundBanks\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 76eb4b2760d9434597f40ecb4ddfc31a
+    GuidInternal: 
+    m_lastTime: -8586464176133552082
+    List:
+    - name: MedievalVillage
+      guid: 1e304fdb6038b443a035a882a1f09fa9
+      id: 664611004
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: MedievalVillage
+        ObjectType: 7
+      Path: Default Work Unit\MedievalVillage
+  EventWwu:
+  - PhysicalPath: Events\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: f2387b510887f74c8d149f5162a9eead
+    GuidInternal: 
+    m_lastTime: -8586457091410489604
+    List:
+    - name: Play_blackSmith
+      guid: b8c9ca47b68bcc47a40a372ed88b1151
+      id: 625873628
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_blackSmith
+        ObjectType: 3
+      Path: Default Work Unit\Play_blackSmith
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_chickenHouse
+      guid: 989648503a4bc748ac0555251850f305
+      id: 3138374501
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_chickenHouse
+        ObjectType: 3
+      Path: Default Work Unit\Play_chickenHouse
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_church
+      guid: d550ffbacaa0c9468cf9b83ba11564e6
+      id: 1219117175
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_church
+        ObjectType: 3
+      Path: Default Work Unit\Play_church
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_eagleWings
+      guid: 1ce530f8b36c0846b1f4bf29ee5ec26f
+      id: 1826891258
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_eagleWings
+        ObjectType: 3
+      Path: Default Work Unit\Play_eagleWings
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_fire
+      guid: a836bfac9234964784aed2d8191b5558
+      id: 3015324718
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_fire
+        ObjectType: 3
+      Path: Default Work Unit\Play_fire
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_footSteps
+      guid: a53b72e643d88648af19a1d160be7b72
+      id: 3854155799
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_footSteps
+        ObjectType: 3
+      Path: Default Work Unit\Play_footSteps
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_fountain
+      guid: cc5c1f4fe3d01845a7b7dc6063e1f077
+      id: 1541866734
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_fountain
+        ObjectType: 3
+      Path: Default Work Unit\Play_fountain
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_gold
+      guid: 88b9a73a21e3f74cb078ccb47cb0d179
+      id: 134325788
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_gold
+        ObjectType: 3
+      Path: Default Work Unit\Play_gold
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_goldShine
+      guid: 2ae8b6bd9632214d98a08a8ae4787e9d
+      id: 3378235033
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_goldShine
+        ObjectType: 3
+      Path: Default Work Unit\Play_goldShine
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_horse
+      guid: a40346a038c5304f83680e519f386bfb
+      id: 1459665785
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_horse
+        ObjectType: 3
+      Path: Default Work Unit\Play_horse
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_jump
+      guid: 2e1506c70ca63d4fac356548e55f8cb0
+      id: 3689126666
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_jump
+        ObjectType: 3
+      Path: Default Work Unit\Play_jump
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_land
+      guid: b4bab27eeda9c34e99e6260ae78257cc
+      id: 4285282925
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_land
+        ObjectType: 3
+      Path: Default Work Unit\Play_land
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_leaves
+      guid: e77dcd62d0b83949b3ddba6a35ce2496
+      id: 3439690150
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_leaves
+        ObjectType: 3
+      Path: Default Work Unit\Play_leaves
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_music
+      guid: 394633d36c4ec342832718b0b6e58bd6
+      id: 2932040671
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_music
+        ObjectType: 3
+      Path: Default Work Unit\Play_music
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_music_loose
+      guid: b24ca4a991bad944b607b230f9bccdbe
+      id: 3640900608
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_music_loose
+        ObjectType: 3
+      Path: Default Work Unit\Play_music_loose
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_music_win
+      guid: 131ef4075d76674987b595b5a41890c3
+      id: 3368677440
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_music_win
+        ObjectType: 3
+      Path: Default Work Unit\Play_music_win
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_screamOfDeath
+      guid: 68fdab9b1fffdb44844ae306fd06da24
+      id: 548524476
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_screamOfDeath
+        ObjectType: 3
+      Path: Default Work Unit\Play_screamOfDeath
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_splash
+      guid: b8b18973731d4e439058641810f91495
+      id: 3948925255
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_splash
+        ObjectType: 3
+      Path: Default Work Unit\Play_splash
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_testEvent
+      guid: cab9d38351145b40b45beded58acf769
+      id: 2351864238
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_testEvent
+        ObjectType: 3
+      Path: Default Work Unit\Play_testEvent
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_warrior
+      guid: d150246eed01e14eb95f7b59144918df
+      id: 533685472
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_warrior
+        ObjectType: 3
+      Path: Default Work Unit\Play_warrior
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_weathercock
+      guid: e07ecb0f899bbb4eb100cc8bd03b6bbd
+      id: 1050993834
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_weathercock
+        ObjectType: 3
+      Path: Default Work Unit\Play_weathercock
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_well
+      guid: 6a872ee60072e74b888c1afffd2deba8
+      id: 1053086726
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_well
+        ObjectType: 3
+      Path: Default Work Unit\Play_well
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_wind
+      guid: 1ce3ce82557b984fb230c5ef737ca840
+      id: 1020223172
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Play_wind
+        ObjectType: 3
+      Path: Default Work Unit\Play_wind
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_goldShine
+      guid: 0d6b70e00008a149bd1bc955e8098bff
+      id: 3551149699
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Stop_goldShine
+        ObjectType: 3
+      Path: Default Work Unit\Stop_goldShine
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Stop_music_normal
+      guid: c1a7b9e072338f4c9c0975aeaa99f438
+      id: 1059602933
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Stop_music_normal
+        ObjectType: 3
+      Path: Default Work Unit\Stop_music_normal
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 2ac9621894165e4da64303819f4ac5da
+    GuidInternal: 
+    m_lastTime: -8586427094617666871
+    List:
+    - name: MusicVolume
+      guid: c588b138e0e5c44d8ea5895961d66c56
+      id: 2346531308
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Volume
+        ObjectType: 4
+      - ElementName: MusicVolume
+        ObjectType: 13
+      Path: Default Work Unit\Volume\MusicVolume
+    - name: SFXVolume
+      guid: 32d87173b67f5143a8c9a322b742dbf8
+      id: 988953028
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Volume
+        ObjectType: 4
+      - ElementName: SFXVolume
+        ObjectType: 13
+      Path: Default Work Unit\Volume\SFXVolume
+  StateWwu:
+  - PhysicalPath: States\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 69a9d18be4bf7c4d88c37b0ec6a88da8
+    GuidInternal: 
+    m_lastTime: -8586458299433159149
+    List:
+    - name: musicState
+      guid: 6b5db504dfd71945a2747548db9dc10e
+      id: 1021618141
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: musicState
+        ObjectType: 9
+      Path: Default Work Unit\musicState
+      values:
+      - name: loose
+        guid: 08e5675de375614a93184b22a35dcdad
+        id: 174960569
+        PathAndIcons:
+        - ElementName: loose
+          ObjectType: 8
+      - name: None
+        guid: 95e81555784c614dba3aae547353e39f
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      - name: normal
+        guid: d7dc9e337584b14196449100532ba842
+        id: 1160234136
+        PathAndIcons:
+        - ElementName: normal
+          ObjectType: 8
+      - name: win
+        guid: f2fe050efcd0254b8c2a24d156874bcf
+        id: 979765101
+        PathAndIcons:
+        - ElementName: win
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+  SwitchWwu:
+  - PhysicalPath: Switches\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: ae231555e2ae0f4fa4d30a2a297d6d16
+    GuidInternal: 
+    m_lastTime: -8586458714211569807
+    List:
+    - name: Material
+      guid: e9d9c0582d288948ad694f165d8f13ce
+      id: 3865314626
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Material
+        ObjectType: 11
+      Path: Default Work Unit\Material
+      values:
+      - name: grass
+        guid: 912d051b55a5ba4f91381ad6aede7165
+        id: 4248645337
+        PathAndIcons:
+        - ElementName: grass
+          ObjectType: 10
+      - name: rock
+        guid: e72e4184e2596147a89ec6dcc6cd3910
+        id: 2144363834
+        PathAndIcons:
+        - ElementName: rock
+          ObjectType: 10
+      - name: water
+        guid: 326a8b6f4cbbf042b40433909dfeefa1
+        id: 2654748154
+        PathAndIcons:
+        - ElementName: water
+          ObjectType: 10
+      - name: wood
+        guid: 6f04adb9605d5144aab18a6c087bd6e0
+        id: 2058049674
+        PathAndIcons:
+        - ElementName: wood
+          ObjectType: 10
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    guid: 0f1856b3872e24459b4ff64af7b11309
+    GuidInternal: 
+    m_lastTime: -8586464244006521884
+    List: []
+  ExpandedItems:
+  - /LeVillageMedieval_v2_WwiseProject
+  - /LeVillageMedieval_v2_WwiseProject/Events
+  - /LeVillageMedieval_v2_WwiseProject/Events/Default Work Unit
+  autoPopulateEnabled: 1
+  CurrentPluginConfig: 

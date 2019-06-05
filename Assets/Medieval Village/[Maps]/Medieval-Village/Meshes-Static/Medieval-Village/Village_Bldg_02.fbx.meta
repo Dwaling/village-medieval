@@ -1,0 +1,212 @@
+fileFormatVersion: 2
+guid: e21c0f1c6cf6e40a3a128d15e0c3cfd4
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Bldg_02_Lamps
+    100004: Bldg_02_Doors_Windows_Shutters
+    100006: Ivy_02
+    100008: Bldg_02_Roof
+    100010: Bldg_02_Stone
+    100012: Ivy_02_LOD1
+    100014: Bldg_02_StuccoWalls
+    100016: Bldg_02_Wood
+    100018: Bldg_02_Lamps_LOD1
+    100020: Bldg_02_Details
+    100022: Bldg_02_LOD2
+    100024: Bldg_02_LOD0
+    100026: Bldg_02_Wood_Stone_Roof_Stucco
+    100030: Bldg_02_LOD1
+    400000: //RootNode
+    400002: Bldg_02_Lamps
+    400004: Bldg_02_Doors_Windows_Shutters
+    400006: Ivy_02
+    400008: Bldg_02_Roof
+    400010: Bldg_02_Stone
+    400012: Ivy_02_LOD1
+    400014: Bldg_02_StuccoWalls
+    400016: Bldg_02_Wood
+    400018: Bldg_02_Lamps_LOD1
+    400020: Bldg_02_Details
+    400022: Bldg_02_LOD2
+    400024: Bldg_02_LOD0
+    400026: Bldg_02_Wood_Stone_Roof_Stucco
+    400030: Bldg_02_LOD1
+    2300000: Bldg_02_Lamps
+    2300002: Bldg_02_Doors_Windows_Shutters
+    2300004: Ivy_02
+    2300006: Bldg_02_Roof
+    2300008: Bldg_02_Stone
+    2300010: Ivy_02_LOD1
+    2300012: Bldg_02_StuccoWalls
+    2300014: Bldg_02_Wood
+    2300016: Bldg_02_Lamps_LOD1
+    2300018: Bldg_02_Details
+    2300020: Bldg_02_Wood_Stone_Roof_Stucco
+    2300024: Bldg_02_LOD2
+    3300000: Bldg_02_Lamps
+    3300002: Bldg_02_Doors_Windows_Shutters
+    3300004: Ivy_02
+    3300006: Bldg_02_Roof
+    3300008: Bldg_02_Stone
+    3300010: Ivy_02_LOD1
+    3300012: Bldg_02_StuccoWalls
+    3300014: Bldg_02_Wood
+    3300016: Bldg_02_Lamps_LOD1
+    3300018: Bldg_02_Details
+    3300020: Bldg_02_Wood_Stone_Roof_Stucco
+    3300024: Bldg_02_LOD2
+    4300000: Bldg_02_Wood
+    4300002: Bldg_02_Doors_Windows_Shutters
+    4300004: Bldg_02_Signs_Tarp_Flue_Steps
+    4300006: Bldg_02_Lamps
+    4300008: Bldg_02_Roof
+    4300010: Bldg_02_Stone
+    4300012: Bldg_02_StuccoWalls
+    4300014: Ivy_02
+    4300016: 'Ivy_02 '
+    4300018: Bldg_02_Wood_Stone_Roof_Stucco
+    4300020: 'Bldg_02_Lamps '
+    4300022: Bldg_02_Details
+    4300024: Bldg_02_LOD2
+    4300026: Bldg_02_Lamps_LOD1
+    4300028: Ivy_02_LOD1
+    11100000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_01_Lamps
+    second: {fileID: 2100000, guid: 81f8152aa706f4b50a88a3fa896cac85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_01_Roof
+    second: {fileID: 2100000, guid: 078aae2c0089e41fd9376ac98c299747, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_01_Stone
+    second: {fileID: 2100000, guid: d5c264d61b5c941439992b14e041b7c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_01_StuccoWalls
+    second: {fileID: 2100000, guid: 8543de589aa6b42c59b86150412d3d98, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_01_Wood
+    second: {fileID: 2100000, guid: 05423b5cc77454475900633ac04cd89d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_02_Details
+    second: {fileID: 2100000, guid: fb694cd3b4c2d49e0bdf2c564c34c3e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_02_LOD2
+    second: {fileID: 2100000, guid: 2d0bc7d4692eb49939b0ca48bfc64036, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bldg_02_Wood_Stone_Roof_Stucco
+    second: {fileID: 2100000, guid: 3937c6acc6c9442b79d9e3bad0b31fef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Free_House_Doors_Windows_Shutters
+    second: {fileID: 2100000, guid: bf79959ba1243424f94cb161619e829f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ivy
+    second: {fileID: 2100000, guid: 61660f4f5c2e54e73a428a683155e956, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 3
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
