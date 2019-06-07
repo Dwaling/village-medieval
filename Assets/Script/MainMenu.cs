@@ -36,7 +36,6 @@ public class MainMenu : MonoBehaviour
             if (GameStates.isGameStarted)
             {
                // CanvasObject.SetActive(!CanvasObject.activeSelf);
-               
 
                 if (!isCursorLocked)
                 {
@@ -95,8 +94,7 @@ public class MainMenu : MonoBehaviour
         {
             GameStates.isGameStarted = true;
         }
-       
-
+  
     }
 
     public void PlayGame()
@@ -130,7 +128,6 @@ public class MainMenu : MonoBehaviour
 
         GameStates.numberOfGold = goldNum[index];
         GameStates.goldRemaining = goldNum[index];
-
         GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
     }
 
@@ -144,15 +141,13 @@ public class MainMenu : MonoBehaviour
 
         if(index < 0)
         {
-
             index = goldNum.Length - 1;
-            //index = 3;
-        } else
+        }
+        else
         {
-            // index = index % 4;
             index = index % goldNum.Length;
         }
-   
+
         GameStates.numberOfGold = goldNum[index];
         GameStates.goldRemaining = goldNum[index];
         GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
@@ -170,7 +165,6 @@ public class MainMenu : MonoBehaviour
 
         GameStates.timeForSearching = gameDurationValue[index];
         GameStates.timeRemaining = gameDurationValue[index];
-
         GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[index];
     }
 
@@ -183,18 +177,15 @@ public class MainMenu : MonoBehaviour
 
         if (index < 0)
         {
-            // index = 4;
             index = gameDurationValue.Length - 1;
         }
         else
         {
-            // index = index % 5;
             index = index % gameDurationValue.Length;
         }
 
         GameStates.timeForSearching = gameDurationValue[index];
         GameStates.timeRemaining = gameDurationValue[index];
-
         GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[index];
     }
 

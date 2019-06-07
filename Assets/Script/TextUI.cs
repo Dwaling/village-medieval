@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class TextUI : MonoBehaviour
 {
-    Text uiText;
+    [SerializeField]
+    Text timeText;
+    [SerializeField]
+    Text goldText;
+
     int timer;
     
-    void Awake()
-    {
-        uiText = GetComponent<Text>();
-    }
+    
 
     void Update()
     {
@@ -19,13 +20,14 @@ public class TextUI : MonoBehaviour
 
         if(GameStates.timeRemaining == 1200.0f)
         {
-              uiText.text = "Time remaining: " + "∞" + "\nGold remaining: " + GameStates.goldRemaining + "/" + GameStates.numberOfGold;
+            timeText.text = "∞" ;
+            goldText.text = GameStates.goldRemaining + "/" + GameStates.numberOfGold;
 
         }
         else
         {
-            uiText.text = "Time remaining: " + timer / 60 + ":" + timer % 60 + "\nGold remaining: " + GameStates.goldRemaining + "/" + GameStates.numberOfGold;
-
+            timeText.text = timer / 60 + ":" + timer % 60;
+            goldText.text = GameStates.goldRemaining + "/" + GameStates.numberOfGold;
         }
         
 

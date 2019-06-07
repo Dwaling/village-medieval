@@ -28,6 +28,8 @@ public class GameStates : MonoBehaviour
     public bool isGamePaused;
     private bool isGoldFound;
     private int score;
+    [SerializeField]
+    Text HUDscoretext;
     private Text scoreText;
     public GameObject background;
     private bool isNewRecord;
@@ -63,6 +65,8 @@ public class GameStates : MonoBehaviour
         playerPosition = player.transform.position;
 
         currentGameStats.timeInVillageInSec += (int)Mathf.Ceil(timeForSearching - timeRemaining);
+
+        HUDscoretext.text = score.ToString();
 
         if (isGameStarted)
         {

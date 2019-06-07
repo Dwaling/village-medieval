@@ -812,7 +812,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Name: 
-  m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 626ad95237a4b9c4ca861ab494d54fa4, type: 2}
 --- !u!1001 &1238349144
 PrefabInstance:

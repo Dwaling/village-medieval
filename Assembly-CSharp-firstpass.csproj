@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9492F3DC-6F04-EB65-1953-E3A89626BEC5}</ProjectGuid>
+    <ProjectGuid>{CD820F53-4E93-7701-C640-B31124551385}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -188,19 +188,19 @@
     <None Include="Assets\Standard Assets\ParticleSystems\Shaders\PriorityParticleAdd.shader" />
     <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -404,16 +404,16 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Substance.Game">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Assets/Allegorithmic/Plugins/Substance.Game.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Assets/Allegorithmic/Plugins/Substance.Game.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

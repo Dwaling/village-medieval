@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FB47CA5B-A2E1-1D6C-5C6A-40CF36CCF1E1}</ProjectGuid>
+    <ProjectGuid>{AE71BE37-4492-5CD1-7B7A-60E7ED61C1A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -124,19 +124,19 @@
     <Compile Include="Assets\Wwise\Editor\WwiseWindows\TreeViewControl\TreeViewControl.cs" />
     <Compile Include="Assets\Wwise\Editor\WwiseWindows\TreeViewControl\TreeViewItem.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -366,6 +366,9 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.WSA.Extensions">
+      <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.WSA.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -373,31 +376,31 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Substance.Game">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Assets/Allegorithmic/Plugins/Substance.Game.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Assets/Allegorithmic/Plugins/Substance.Game.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Assets/Allegorithmic/Plugins/Substance/Livelink/Editor/Plugins/websocket-sharp.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Assets/Allegorithmic/Plugins/Substance/Livelink/Editor/Plugins/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Substance.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Assets/Allegorithmic/Plugins/Substance/Substance Engine/Editor/Substance.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Assets/Allegorithmic/Plugins/Substance/Substance Engine/Editor/Substance.Editor.dll</HintPath>
     </Reference>
     <Reference Include="SourceUnityLib">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Assets/Allegorithmic/Plugins/Substance/Substance Source/Editor/SourceUnityLib.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Assets/Allegorithmic/Plugins/Substance/Substance Source/Editor/SourceUnityLib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>D:/Documents de cour/Session 3/UI/31MaiMatin/LeVillageMedieval_v2/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>J:/420-J10-INTERFACES_USAGERS/TP2_UI/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -756,15 +759,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{9492F3DC-6F04-EB65-1953-E3A89626BEC5}</Project>
+      <Project>{CD820F53-4E93-7701-C640-B31124551385}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{857BEA5D-C6D2-2082-21B4-F7F618480235}</Project>
+      <Project>{1261F114-76A4-F986-F3E9-78F0313F79DF}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{C73F1AE0-038B-87F6-4457-85229FFA3EBF}</Project>
+      <Project>{09F49131-AFA0-2C09-FBB4-39FBE5AE9A75}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
