@@ -55,9 +55,7 @@ public class GameStates : MonoBehaviour
     void Start()
     {
         isNewRecord = false;
-
-        isGameOver = false;
-        
+        isGameOver = false;  
         player = GameObject.Find("FPSController");
         Cursor.visible = true;
     }
@@ -113,6 +111,7 @@ public class GameStates : MonoBehaviour
                     }
 
                     //canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
+            
                     canevasWin.gameObject.SetActive(true);
                     canvasHUD.gameObject.SetActive(false);
                    // isGameStarted = false;
@@ -148,14 +147,18 @@ public class GameStates : MonoBehaviour
                         isWinMusicAlreadyPlayed = true;
                     }
 
+                    //GameObject.Find("Loose_panel").transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                        
+                 
                     canevasLoose.gameObject.SetActive(true);
                     canvasHUD.gameObject.SetActive(false);
-                   // canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
+                    canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
                     isGameOver = true;
+                    isGamePaused = true;
                     // isGameStarted = false;
                     background.gameObject.SetActive(true);
                     GameObject.Find("MainMenuAddition").SetActive(false);
-                    isGamePaused = true;
+                   
                     ++currentGameStats.nbGameLost;
                     currentGameStats = GameTimeChoice(currentGameStats);
                     currentGameStats = GameGoldNb(currentGameStats);

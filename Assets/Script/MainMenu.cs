@@ -9,9 +9,7 @@ public class MainMenu : MonoBehaviour
     private bool isFromMainMenu;
     public GameObject CanvasObject;
     bool isCursorLocked;
-
     public GameObject inputField;
-
     private int[] goldNum = { 1, 3, 5, 10 };
     string[] gameDuration = { "30 sec", "60 sec", "2 min", "5 min", "illimité" };
     float[] gameDurationValue = { 30.0f, 60.0f, 120.0f, 300.0f, 1200.0f };
@@ -23,7 +21,6 @@ public class MainMenu : MonoBehaviour
         GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
         GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[2];
     }
-
 
     void Update()
     {
@@ -37,7 +34,6 @@ public class MainMenu : MonoBehaviour
                     SetIsCursorLocked(true);
                     GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = false;
                     CanvasObject.SetActive(false);
-
                 }
                 else if (isCursorLocked)
                 {
@@ -49,10 +45,8 @@ public class MainMenu : MonoBehaviour
         }
     }
 
- 
     public void SetIsGameStarted(bool isGameStarted)
     {
-    
         if(!isGameStarted)
         {
             GameStates.isGameStarted = false;
@@ -67,7 +61,6 @@ public class MainMenu : MonoBehaviour
         {
             GameStates.isGameStarted = true;
         }
-  
     }
 
     public void PlayGame()
@@ -90,7 +83,6 @@ public class MainMenu : MonoBehaviour
     {
         int currentNumberOfGold = GameStates.numberOfGold;
         int index = System.Array.IndexOf(goldNum, currentNumberOfGold);
-
         index++;
         index = index % 4;
         GameStates.numberOfGold = goldNum[index];
