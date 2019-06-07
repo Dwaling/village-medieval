@@ -18,7 +18,6 @@ public class GameStates : MonoBehaviour
     public GameObject goldSpawnPoints; 
     List<Transform> allSpawnPoints = new List<Transform>(); 
     public static List<Transform> randomSelectedGoldList = new List<Transform>();
-    private List<GameObject> gameObjectsList;
     public static bool isWinMusicAlreadyPlayed = false;
     private bool isTimeUp = false;
     public static bool isGameOver;
@@ -34,7 +33,10 @@ public class GameStates : MonoBehaviour
     public GameObject background;
     private bool isNewRecord;
     public GameObject newRecordPanel;
-    public GameObject mainMenu;
+    [SerializeField]
+    public GameObject canvasMain;
+    [SerializeField]
+    public GameObject canvasHUD;
 
     void Awake()
     {
@@ -81,8 +83,7 @@ public class GameStates : MonoBehaviour
                     else
                     {
                         timeRemaining -= Time.deltaTime;
-                    }
-                    
+                    }                
                 }
 
                 if (isGamePaused)
@@ -99,13 +100,11 @@ public class GameStates : MonoBehaviour
                     int nbGoldFound = numberOfGold - goldRemaining;
                     int bonus = GetBonus();
                     score += 300 * nbGoldFound * bonus;
-                    //scoreText.text = score.ToString();
                     isGoldFound = false;
                 }
 
                 if (goldRemaining <= 0)
                 {
-                
                     if (!isWinMusicAlreadyPlayed)
                     {
                         AkSoundEngine.PostEvent("Stop_music_normal", gameObject);
@@ -113,8 +112,10 @@ public class GameStates : MonoBehaviour
                         isWinMusicAlreadyPlayed = true;
                     }
 
+                    //canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
                     canevasWin.gameObject.SetActive(true);
-                    isGameStarted = false;
+                    canvasHUD.gameObject.SetActive(false);
+                   // isGameStarted = false;
                     isGameOver = true;
                     ++currentGameStats.nbGameWin;
                     currentGameStats = GameGoldNb(currentGameStats);
@@ -128,8 +129,7 @@ public class GameStates : MonoBehaviour
                     if (RankingManager.instance.IsItNewRecord(score))
                     {
                         isNewRecord = true;
-                        newRecordPanel.SetActive(true);
-                        
+                        newRecordPanel.SetActive(true);                     
                     }
 
                     StatsManager.instance.LoadStats(StatsManager.instance.fileName);
@@ -149,24 +149,29 @@ public class GameStates : MonoBehaviour
                     }
 
                     canevasLoose.gameObject.SetActive(true);
+                    canvasHUD.gameObject.SetActive(false);
+                   // canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
                     isGameOver = true;
-                    isGameStarted = false;
+                    // isGameStarted = false;
+                    background.gameObject.SetActive(true);
+                    GameObject.Find("MainMenuAddition").SetActive(false);
+                    isGamePaused = true;
                     ++currentGameStats.nbGameLost;
                     currentGameStats = GameTimeChoice(currentGameStats);
                     currentGameStats = GameGoldNb(currentGameStats);
                     currentGameStats.nbGoldBagAllTime += numberOfGold - goldRemaining;
                     StatsManager.instance.UpdateStats(currentGameStats);
                     StatsManager.instance.SaveStatsData();
-
                     StatsManager.instance.LoadStats(StatsManager.instance.fileName);
                     StatsManager.instance.FillStatsMenu();
                 }
-
             }
-        } else
+        }
+
+        else
         {
             GameObject.Find("FPSController").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
-            mainMenu.GetComponent<MainMenu>().SetIsCursorLocked(false);
+            canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
         }
     }
 
@@ -178,6 +183,7 @@ public class GameStates : MonoBehaviour
     private int GetBonus()
     {
         int bonus = 0;
+
         if (timeForSearching == 30)
         {
             bonus = 8;
@@ -216,7 +222,6 @@ public class GameStates : MonoBehaviour
         foreach (var items in randomSelectedGoldList)
         {
             Instantiate(gold, items.transform);
-            print(items);
         }
     }
 
@@ -277,9 +282,7 @@ public class GameStates : MonoBehaviour
 
     public void SetIsPaused(bool isPaused)
     {
-
       isGamePaused = isPaused;
- 
     }
 
     public bool IsItNewRecord()
@@ -301,8 +304,5 @@ public class GameStates : MonoBehaviour
     {
         isNewRecord = NewRecord;
     }
-
-
-
 }
 

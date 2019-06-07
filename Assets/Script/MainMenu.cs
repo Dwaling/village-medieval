@@ -19,11 +19,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         CanvasObject.SetActive(false);
-        //CanvasObject.enabled = CanvasObject.enabled;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        isCursorLocked = false;
+        SetIsCursorLocked(false);
         GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
         GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[2];
     }
@@ -33,24 +29,19 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameStates.isGameStarted)
+            if (GameStates.isGameStarted && !GameStates.isGameOver)
             {
-               // CanvasObject.SetActive(!CanvasObject.activeSelf);
-
+             
                 if (!isCursorLocked)
-                {
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = (false);
-                    isCursorLocked = (true);
+                {            
+                    SetIsCursorLocked(true);
                     GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = false;
                     CanvasObject.SetActive(false);
 
                 }
                 else if (isCursorLocked)
                 {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = (true);
-                    isCursorLocked = (false);
+                    SetIsCursorLocked(false);
                     GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = true;
                     CanvasObject.SetActive(true);
                 }
@@ -58,31 +49,13 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void ShowHideMenu()
-    {
-        CanvasObject.SetActive(!CanvasObject.activeSelf);
-
-        if (!isCursorLocked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = (false);
-            isCursorLocked = (true);
-        }
-        else if (isCursorLocked)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = (true);
-            isCursorLocked = (false);
-        }
-    }
-
+ 
     public void SetIsGameStarted(bool isGameStarted)
     {
     
         if(!isGameStarted)
         {
             GameStates.isGameStarted = false;
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             GameStates.instance.ResetCurrentGameStats();
             GameStates.goldRemaining = GameStates.numberOfGold;
             GameStates.isWinMusicAlreadyPlayed = false;
@@ -100,11 +73,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         GameObject.Find("GameState").GetComponent<GameStates>().GoldSpawn();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        //ShowHideMenu();
-        isCursorLocked = (true);
-        
+        SetIsCursorLocked(true);
     }
 
     public void QuitGame()
@@ -123,14 +92,11 @@ public class MainMenu : MonoBehaviour
         int index = System.Array.IndexOf(goldNum, currentNumberOfGold);
 
         index++;
-
         index = index % 4;
-
         GameStates.numberOfGold = goldNum[index];
         GameStates.goldRemaining = goldNum[index];
         GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
     }
-
 
     public void DecreaseNumberOfGold()
     {
@@ -158,11 +124,8 @@ public class MainMenu : MonoBehaviour
     {
         float currentGameDuration = GameStates.timeForSearching;
         int index = System.Array.IndexOf(gameDurationValue, currentGameDuration);
-
         index++;
-
         index = index % 5;
-
         GameStates.timeForSearching = gameDurationValue[index];
         GameStates.timeRemaining = gameDurationValue[index];
         GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[index];
@@ -218,17 +181,16 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void SetIsCursorLocked(bool isLocked)
+    public void SetIsCursorLocked(bool isLocked) //TODO think better name 
     {
-
-       if(isLocked)
+        if (isLocked)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = (false);
             isCursorLocked = true;
         }
 
-        if (!isLocked)
+        else 
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = (true);
@@ -241,7 +203,6 @@ public class MainMenu : MonoBehaviour
         if (GameStates.instance.IsItNewRecord())
         {
             string name = inputField.transform.GetChild(0).GetComponent<Text>().text;
-
             RankingManager.instance.AddNewRecord(name, GameStates.instance.GetScore());
             RankingManager.instance.SaveRankingData();
             RankingManager.instance.PopulateRanking();
@@ -250,6 +211,4 @@ public class MainMenu : MonoBehaviour
 
         GameStates.instance.ResetScore();
     }
-
-
 }
