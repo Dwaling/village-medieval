@@ -26,11 +26,12 @@ public class StatsManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         LoadStats(fileName);
+
+        FillStatsMenu();
     }
 
     private void Start()
     {
-        FillStatsMenu();
     }
 
     public void LoadStats(string fileName)

@@ -22,8 +22,7 @@ public class GameStates : MonoBehaviour
     private bool isTimeUp = false;
     public static bool isGameOver;
     public static bool isGameStarted = false;
-    public GameObject canevasWin;
-    public GameObject canevasLoose;
+    public GameObject EndGamePanel;
     public bool isGamePaused;
     private bool isGoldFound;
     private int score;
@@ -31,7 +30,6 @@ public class GameStates : MonoBehaviour
     Text HUDscoretext;
     private Text scoreText;
     public GameObject background;
-    private bool isNewRecord;
     public GameObject newRecordPanel;
     [SerializeField]
     public GameObject canvasMain;
@@ -54,7 +52,6 @@ public class GameStates : MonoBehaviour
 
     void Start()
     {
-        isNewRecord = false;
         isGameOver = false;  
         player = GameObject.Find("FPSController");
         Cursor.visible = true;
@@ -110,11 +107,18 @@ public class GameStates : MonoBehaviour
                         isWinMusicAlreadyPlayed = true;
                     }
 
-                    //canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
-            
-                    canevasWin.gameObject.SetActive(true);
+                    canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
+                    background.gameObject.SetActive(true);
+                    EndGamePanel.gameObject.SetActive(true);
+                    // EndGamePanel.transform.GetChild(3).gameObject.SetActive(false);
+                   
+                    background.transform.GetChild(0).gameObject.SetActive(false);
+                   // GameObject.Find("MainMenuAddition").SetActive(false);
+                    GameObject.Find("Loose").SetActive(false);
+                    GameObject.Find("Congrat").SetActive(true);
+
                     canvasHUD.gameObject.SetActive(false);
-                   // isGameStarted = false;
+                    isGameStarted = false;
                     isGameOver = true;
                     ++currentGameStats.nbGameWin;
                     currentGameStats = GameGoldNb(currentGameStats);
@@ -123,14 +127,6 @@ public class GameStates : MonoBehaviour
                     StatsManager.instance.UpdateStats(currentGameStats);
                     StatsManager.instance.SaveStatsData();
                     background.gameObject.SetActive(true);
-                    GameObject.Find("MainMenuAddition").SetActive(false);
-
-                    if (RankingManager.instance.IsItNewRecord(score))
-                    {
-                        isNewRecord = true;
-                        newRecordPanel.SetActive(true);                     
-                    }
-
                     StatsManager.instance.LoadStats(StatsManager.instance.fileName);
                     StatsManager.instance.FillStatsMenu();
                 }
@@ -146,18 +142,20 @@ public class GameStates : MonoBehaviour
                         AkSoundEngine.PostEvent("Play_music_loose", gameObject);
                         isWinMusicAlreadyPlayed = true;
                     }
-
-                    //GameObject.Find("Loose_panel").transform.GetChild(3).gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                        
-                 
-                    canevasLoose.gameObject.SetActive(true);
-                    canvasHUD.gameObject.SetActive(false);
                     canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
+                    background.gameObject.SetActive(true);
+                    EndGamePanel.gameObject.SetActive(true);
+                    EndGamePanel.transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
+                    EndGamePanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
+                    GameObject.Find("MainMenuAddition").SetActive(false);
+                    GameObject.Find("Congrat").SetActive(false);
+                   
+                    canvasHUD.gameObject.SetActive(false);
+                    
                     isGameOver = true;
                     isGamePaused = true;
-                    // isGameStarted = false;
-                    background.gameObject.SetActive(true);
-                    GameObject.Find("MainMenuAddition").SetActive(false);
+                    isGameStarted = false;
+                    
                    
                     ++currentGameStats.nbGameLost;
                     currentGameStats = GameTimeChoice(currentGameStats);
@@ -175,6 +173,21 @@ public class GameStates : MonoBehaviour
         {
             GameObject.Find("FPSController").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
+        }
+    }
+    // TODO Find a better name
+    public void GoFromEndGamePanelToNextPanel()
+    { 
+        if (RankingManager.instance.IsItNewRecord(score) && !isTimeUp)
+        {
+            newRecordPanel.SetActive(true);
+           // EndGamePanel.SetActive(false);
+        }
+        else
+        {
+           // EndGamePanel.SetActive(false);
+            canvasMain.SetActive(true);      
+            GameObject.Find("MainMenuAddition").SetActive(false);
         }
     }
 
@@ -288,11 +301,6 @@ public class GameStates : MonoBehaviour
       isGamePaused = isPaused;
     }
 
-    public bool IsItNewRecord()
-    {
-        return isNewRecord;
-    }
-
     public int GetScore()
     {
         return score;
@@ -301,11 +309,6 @@ public class GameStates : MonoBehaviour
     public void ResetScore()
     {
         score = 0;
-    }
-
-    public void SetIsNewRecord(bool NewRecord)
-    {
-        isNewRecord = NewRecord;
     }
 }
 

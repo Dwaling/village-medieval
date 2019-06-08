@@ -24,25 +24,27 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(!GameStates.instance.isGamePaused)
         {
-            if (GameStates.isGameStarted && !GameStates.isGameOver)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-             
-                if (!isCursorLocked)
-                {            
-                    SetIsCursorLocked(true);
-                    GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = false;
-                    CanvasObject.SetActive(false);
-                }
-                else if (isCursorLocked)
+                if (GameStates.isGameStarted && !GameStates.isGameOver)
                 {
-                    SetIsCursorLocked(false);
-                    GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = true;
-                    CanvasObject.SetActive(true);
+                    if (!isCursorLocked)
+                    {
+                        SetIsCursorLocked(true);
+                        GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = false;
+                        CanvasObject.SetActive(false);
+                    }
+                    else if (isCursorLocked)
+                    {
+                        SetIsCursorLocked(false);
+                        GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = true;
+                        CanvasObject.SetActive(true);
+                    }
                 }
             }
-        }
+        } 
     }
 
     public void SetIsGameStarted(bool isGameStarted)
@@ -192,13 +194,12 @@ public class MainMenu : MonoBehaviour
 
     public void SaveNewRecord()
     {
-        if (GameStates.instance.IsItNewRecord())
+        if (RankingManager.instance.IsItNewRecord(GameStates.instance.GetScore()))
         {
             string name = inputField.transform.GetChild(0).GetComponent<Text>().text;
             RankingManager.instance.AddNewRecord(name, GameStates.instance.GetScore());
             RankingManager.instance.SaveRankingData();
             RankingManager.instance.PopulateRanking();
-            GameStates.instance.SetIsNewRecord(false);
         }
 
         GameStates.instance.ResetScore();
