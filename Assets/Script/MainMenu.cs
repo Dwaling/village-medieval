@@ -13,13 +13,15 @@ public class MainMenu : MonoBehaviour
     private int[] goldNum = { 1, 3, 5, 10 };
     string[] gameDuration = { "30 sec", "60 sec", "2 min", "5 min", "illimité" };
     float[] gameDurationValue = { 30.0f, 60.0f, 120.0f, 300.0f, 1200.0f };
+    public Text goldSelectorText;
+    public Text timeSelectorText;
 
     void Start()
     {
         CanvasObject.SetActive(false);
         SetIsCursorLocked(false);
-        GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
-        GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[2];
+        goldSelectorText.text = GameStates.numberOfGold.ToString();
+        timeSelectorText.text = gameDuration[2];
     }
 
     void Update()
@@ -156,26 +158,7 @@ public class MainMenu : MonoBehaviour
         return isFromMainMenu;
     }
 
-    public void ShowCorrectMenu()
-    {
-        if (isFromMainMenu)
-        {
-            
-            GameObject.Find("MainMenu_panel").SetActive(true);
-            GameObject.Find("MainMenuAddition").SetActive(true);
-            isFromMainMenu = false;
-            GameObject.Find("Option_panel").SetActive(false);
-        }
-        else
-        {
-            GameObject.Find("Pause_panel").SetActive(true);
-            GameObject.Find("Option_panel").SetActive(false);
-            GameObject.Find("MainMenu_panel").SetActive(false);
-            GameObject.Find("MainMenuAddition").SetActive(false);
-        }
-    }
-
-    public void SetIsCursorLocked(bool isLocked) //TODO think better name 
+    public void SetIsCursorLocked(bool isLocked) 
     {
         if (isLocked)
         {

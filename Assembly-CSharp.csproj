@@ -86,6 +86,7 @@
     <Compile Include="Assets\Script\Localization Tool\LocalizedText.cs" />
     <Compile Include="Assets\Script\LooseMenu.cs" />
     <Compile Include="Assets\Script\MainMenu.cs" />
+    <Compile Include="Assets\Script\Minimap.cs" />
     <Compile Include="Assets\Script\MusicPlayer.cs" />
     <Compile Include="Assets\Script\Ranking Tool\RankingData.cs" />
     <Compile Include="Assets\Script\Ranking Tool\RankingManager.cs" />

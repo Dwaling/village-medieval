@@ -24,7 +24,7 @@ public class Minimap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Instantiate<Transform>(player, miniMap  , true,);
+       // Instantiate<Transform>(player, miniMap  , true);
        // Vector3 playerPositionOnMinimap = player.position * mapSize.position;
         //Instantiate<Sprite>(playerIcon, mapSize, true);
     }

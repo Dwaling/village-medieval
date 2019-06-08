@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameStates : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class GameStates : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -110,12 +111,14 @@ public class GameStates : MonoBehaviour
                     canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
                     background.gameObject.SetActive(true);
                     EndGamePanel.gameObject.SetActive(true);
+                    //EndGamePanel.transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
+                    //EndGamePanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
                     // EndGamePanel.transform.GetChild(3).gameObject.SetActive(false);
-                   
+
                     background.transform.GetChild(0).gameObject.SetActive(false);
                    // GameObject.Find("MainMenuAddition").SetActive(false);
-                    GameObject.Find("Loose").SetActive(false);
-                    GameObject.Find("Congrat").SetActive(true);
+                   // GameObject.Find("Loose").SetActive(false);
+                   // GameObject.Find("Congrat").SetActive(true);
 
                     canvasHUD.gameObject.SetActive(false);
                     isGameStarted = false;
@@ -144,12 +147,10 @@ public class GameStates : MonoBehaviour
                     }
                     canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
                     background.gameObject.SetActive(true);
+                    background.transform.GetChild(0).gameObject.SetActive(false);
                     EndGamePanel.gameObject.SetActive(true);
                     EndGamePanel.transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                     EndGamePanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
-                    GameObject.Find("MainMenuAddition").SetActive(false);
-                    GameObject.Find("Congrat").SetActive(false);
-                   
                     canvasHUD.gameObject.SetActive(false);
                     
                     isGameOver = true;
@@ -175,19 +176,21 @@ public class GameStates : MonoBehaviour
             canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
         }
     }
-    // TODO Find a better name
+    
     public void GoFromEndGamePanelToNextPanel()
     { 
-        if (RankingManager.instance.IsItNewRecord(score) && !isTimeUp)
+        if (RankingManager.instance.IsItNewRecord(score) && !isTimeUp) // Si c'est un nouveau record et que tout le temps n'est pas ecoulé 
         {
-            newRecordPanel.SetActive(true);
-           // EndGamePanel.SetActive(false);
+            newRecordPanel.SetActive(true); // On va au newRecord Panel 
+          
         }
-        else
+        else   // Sinon, on va au Main menu
         {
-           // EndGamePanel.SetActive(false);
-            canvasMain.SetActive(true);      
-            GameObject.Find("MainMenuAddition").SetActive(false);
+            canvasMain.transform.GetChild(1).gameObject.SetActive(true); // Active MainMenu panel   
+            canvasMain.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true); // Active main menu addition
+            // TODO Reloadscene et/ou ResetGameStates
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
         }
     }
 
