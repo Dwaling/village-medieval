@@ -1,49 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Minimap : MonoBehaviour
 {
-    [SerializeField]
-    Transform player;
-    List<Transform> golds;
+    public GameObject LancelotIconParent;
+    public Image LancelotIcon;
+    public GameObject Character;
+    bool isAlreadyInit = false;
+    public GameObject GoldIconParent;
 
+    Vector3 CharacterPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 LancelotIconPosition = new Vector3(0.0f, 0.0f, 0.0f);
     [SerializeField]
-    Sprite playerIcon;
-    [SerializeField]
-    Sprite goldIcon;
+    GameObject goldIcon;
+    List<GameObject> GoldIconList;
+    float WorldMapHeight = 197.0f;
+    float WorldMapWidth = 197.0f;
+    float MiniMapHeight = 244.1f;
+    float MiniMapWidth = 278.0f;
 
-    [SerializeField]
-    Transform mapSize;
-
-    [SerializeField]
-    Sprite miniMap;
-
-    float iconSize = 10;
-    float iconHalfSize;
-    // Start is called before the first frame update
     void Start()
     {
-       // Instantiate<Transform>(player, miniMap  , true);
-       // Vector3 playerPositionOnMinimap = player.position * mapSize.position;
-        //Instantiate<Sprite>(playerIcon, mapSize, true);
+        CharacterPosition = Character.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        iconHalfSize = iconSize / 2;
+        Vector3 CharacterPosition = new Vector3((Character.transform.position.x / WorldMapHeight) * MiniMapHeight, (Character.transform.position.z / MiniMapHeight) * MiniMapWidth, 0.0f);
 
-        
+        if(GameStates.instance.GetSelectedGoldList() != null)
+        {
+            if(!isAlreadyInit)
+            {
+                List<Transform> SelectedGoldListToSpawn = GameStates.instance.GetSelectedGoldList();
+                isAlreadyInit = true;
+                foreach(Transform items in SelectedGoldListToSpawn)
+                {
+                    GameObject newGoldIcon = Instantiate(goldIcon, FromWorldToMiniMapSpace(items.position), Quaternion.identity, GoldIconParent.transform);
+                    GoldIconList.Add(newGoldIcon);
+                }
+            }
+        }
+
+        LancelotIcon.rectTransform.position = CharacterPosition;
     }
 
-    float GetMapPosX()
+    public Vector3 FromWorldToMiniMapSpace(Vector3 goldWS)
     {
-        return player.transform.position.x * miniMap.border.x / mapSize.transform.localScale.x;
-    }
-
-    float GetMapPosY()
-    {
-        return player.transform.position.z * miniMap.border.y / mapSize.transform.localScale.y;
+        return new Vector3((goldWS.x / 197.0f) * 244.1f, (goldWS.z / 197.0f) * 278.0f, 0.0f);
     }
 }

@@ -313,5 +313,10 @@ public class GameStates : MonoBehaviour
     {
         score = 0;
     }
+
+    public List<Transform> GetSelectedGoldList()
+    {
+        return randomSelectedGoldList;
+    }
 }
 
