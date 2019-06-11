@@ -16,23 +16,23 @@ public class Minimap : MonoBehaviour
     [SerializeField]
     GameObject goldIcon;
     List<GameObject> GoldIconList;
-    float WorldMapHeight = 197.0f;
-    float WorldMapWidth = 197.0f;
-    float MiniMapHeight = 244.1f;
-    float MiniMapWidth = 278.0f;
+    float WorldMapHeight = 197.5313f;
+    float WorldMapWidth = 197.5313f;
+    float MiniMapHeight = 321f;
+    float MiniMapWidth = 348f;
 
     void Start()
     {
-        CharacterPosition = Character.transform.position;
+        CharacterPosition = Character.transform.position + gameObject.transform.position;
     }
 
     void Update()
     {
-        Vector3 CharacterPosition = new Vector3((Character.transform.position.x / WorldMapHeight) * MiniMapHeight, (Character.transform.position.z / MiniMapHeight) * MiniMapWidth, 0.0f);
+        CharacterPosition = new Vector3((Character.transform.position.x / WorldMapWidth) * MiniMapWidth, (Character.transform.position.z / WorldMapHeight) * MiniMapHeight, 0.0f);
 
         if(GameStates.instance.GetSelectedGoldList() != null)
         {
-            if(!isAlreadyInit)
+            if(!isAlreadyInit && GameStates.isGameStarted)
             {
                 List<Transform> SelectedGoldListToSpawn = GameStates.instance.GetSelectedGoldList();
                 isAlreadyInit = true;
@@ -43,12 +43,12 @@ public class Minimap : MonoBehaviour
                 }
             }
         }
-
-        LancelotIcon.rectTransform.position = CharacterPosition;
+        
+        LancelotIcon.rectTransform.position = (CharacterPosition + gameObject.transform.position);
     }
 
     public Vector3 FromWorldToMiniMapSpace(Vector3 goldWS)
     {
-        return new Vector3((goldWS.x / 197.0f) * 244.1f, (goldWS.z / 197.0f) * 278.0f, 0.0f);
+        return new Vector3((goldWS.x / WorldMapWidth) * MiniMapWidth, (goldWS.z / WorldMapHeight) * MiniMapHeight, 0.0f);
     }
 }
