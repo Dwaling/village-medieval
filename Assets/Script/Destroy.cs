@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour
 {
+    public GameObject goldIcon;
     void Update()
     {
         if ((GameStates.playerPosition - gameObject.transform.position).magnitude < 3.0f)
@@ -12,6 +13,7 @@ public class Destroy : MonoBehaviour
             GameStates.goldRemaining--;
             AkSoundEngine.PostEvent("Stop_goldShine", gameObject);
             GameStates.instance.GoldAsBeenFound();
+            Destroy(goldIcon);
             Destroy(gameObject);
         }
     }

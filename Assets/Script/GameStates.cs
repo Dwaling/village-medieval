@@ -15,7 +15,7 @@ public class GameStates : MonoBehaviour
     private GameObject player;
     public static Vector3 playerPosition;
     Vector3 goldPosition;
-    public GameObject gold;
+    public GameObject goldPrefab;
     public GameObject goldSpawnPoints; 
     List<Transform> allSpawnPoints = new List<Transform>(); 
     public static List<Transform> randomSelectedGoldList = new List<Transform>();
@@ -29,13 +29,22 @@ public class GameStates : MonoBehaviour
     private int score;
     [SerializeField]
     Text HUDscoretext;
-    private Text scoreText;
+    [SerializeField]
+    Text endGameScoreText;
+    [SerializeField]
+    Text endGameTimeText;
+    [SerializeField]
+    Text endGameGoldText;
+    [SerializeField]
+    Minimap miniMap;
+    //private Text scoreText;
     public GameObject background;
     public GameObject newRecordPanel;
     [SerializeField]
     public GameObject canvasMain;
     [SerializeField]
     public GameObject canvasHUD;
+    List<GameObject> golds;
 
     void Awake()
     {
@@ -47,8 +56,6 @@ public class GameStates : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -56,6 +63,7 @@ public class GameStates : MonoBehaviour
         isGameOver = false;  
         player = GameObject.Find("FPSController");
         Cursor.visible = true;
+        golds = new List<GameObject>();
     }
 
     void Update()
@@ -111,15 +119,8 @@ public class GameStates : MonoBehaviour
                     canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
                     background.gameObject.SetActive(true);
                     EndGamePanel.gameObject.SetActive(true);
-                    //EndGamePanel.transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
-                    //EndGamePanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
-                    // EndGamePanel.transform.GetChild(3).gameObject.SetActive(false);
-
+                    EndGameScore();
                     background.transform.GetChild(0).gameObject.SetActive(false);
-                   // GameObject.Find("MainMenuAddition").SetActive(false);
-                   // GameObject.Find("Loose").SetActive(false);
-                   // GameObject.Find("Congrat").SetActive(true);
-
                     canvasHUD.gameObject.SetActive(false);
                     isGameStarted = false;
                     isGameOver = true;
@@ -152,7 +153,7 @@ public class GameStates : MonoBehaviour
                     EndGamePanel.transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                     EndGamePanel.transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
                     canvasHUD.gameObject.SetActive(false);
-                    
+                    EndGameScore();
                     isGameOver = true;
                     isGamePaused = true;
                     isGameStarted = false;
@@ -175,6 +176,13 @@ public class GameStates : MonoBehaviour
             GameObject.Find("FPSController").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
         }
+    }
+
+    private void EndGameScore()
+    {
+        endGameScoreText.text = score.ToString();
+        endGameTimeText.text = (Mathf.Floor(timeForSearching - timeRemaining)).ToString() + "Sec.";
+        endGameGoldText.text = (numberOfGold - goldRemaining).ToString();
     }
     
     public void GoFromEndGamePanelToNextPanel()
@@ -240,7 +248,11 @@ public class GameStates : MonoBehaviour
 
         foreach (var items in randomSelectedGoldList)
         {
-            Instantiate(gold, items.transform);
+            GameObject gold = Instantiate(goldPrefab, items.transform);
+
+            golds.Add(gold);
+           // gold.GetComponent<Destroy>().goldIcon = miniMap.CreateGoldIcon(items.transform.position);
+
         }
     }
 
@@ -317,6 +329,11 @@ public class GameStates : MonoBehaviour
     public List<Transform> GetSelectedGoldList()
     {
         return randomSelectedGoldList;
+    }
+
+    public List<GameObject> GetGoldList()
+    {
+        return golds;
     }
 }
 

@@ -5,50 +5,70 @@ using UnityEngine.UI;
 
 public class Minimap : MonoBehaviour
 {
-    public GameObject LancelotIconParent;
-    public Image LancelotIcon;
-    public GameObject Character;
+    public GameObject iconParent;
+    public Image lancelotIcon;
+    public GameObject character;
     bool isAlreadyInit = false;
-    public GameObject GoldIconParent;
 
-    Vector3 CharacterPosition = new Vector3(0.0f, 0.0f, 0.0f);
-    Vector3 LancelotIconPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 characterPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    Vector3 lancelotIconPosition = new Vector3(0.0f, 0.0f, 0.0f);
     [SerializeField]
-    GameObject goldIcon;
-    List<GameObject> GoldIconList;
-    float WorldMapHeight = 197.5313f;
-    float WorldMapWidth = 197.5313f;
-    float MiniMapHeight = 321f;
-    float MiniMapWidth = 348f;
+    GameObject goldIconPrefab;
+    [SerializeField]
+    List<GameObject> goldIconList;
+    float worldMapHeight = 197.5313f;
+    float worldMapWidth = 197.5313f;
+    float miniMapHeight = 321f;
+    float miniMapWidth = 348f;
 
     void Start()
     {
-        CharacterPosition = Character.transform.position + gameObject.transform.position;
+        characterPosition = character.transform.position + gameObject.transform.position;
     }
 
     void Update()
     {
-        CharacterPosition = new Vector3((Character.transform.position.x / WorldMapWidth) * MiniMapWidth, (Character.transform.position.z / WorldMapHeight) * MiniMapHeight, 0.0f);
+        characterPosition = FromWorldToMiniMapSpace(character.transform.position);
 
-        if(GameStates.instance.GetSelectedGoldList() != null)
+        if (GameStates.instance.GetSelectedGoldList() != null)
         {
             if(!isAlreadyInit && GameStates.isGameStarted)
             {
-                List<Transform> SelectedGoldListToSpawn = GameStates.instance.GetSelectedGoldList();
                 isAlreadyInit = true;
-                foreach(Transform items in SelectedGoldListToSpawn)
+
+                foreach(GameObject gold in GameStates.instance.GetGoldList())
                 {
-                    GameObject newGoldIcon = Instantiate(goldIcon, FromWorldToMiniMapSpace(items.position), Quaternion.identity, GoldIconParent.transform);
-                    GoldIconList.Add(newGoldIcon);
+                    GameObject newGoldIcon = Instantiate(goldIconPrefab, gold.transform.position, Quaternion.identity, iconParent.transform);
+                    newGoldIcon.transform.position = FromWorldToMiniMapSpace(newGoldIcon.transform.position) + gameObject.transform.position;
+                    gold.GetComponent<Destroy>().goldIcon = newGoldIcon;
+                    goldIconList.Add(newGoldIcon);
                 }
             }
         }
-        
-        LancelotIcon.rectTransform.position = (CharacterPosition + gameObject.transform.position);
+
+        lancelotIcon.rectTransform.position = (characterPosition + gameObject.transform.position);
     }
 
-    public Vector3 FromWorldToMiniMapSpace(Vector3 goldWS)
+    public Vector3 FromWorldToMiniMapSpace(Vector3 position)
     {
-        return new Vector3((goldWS.x / WorldMapWidth) * MiniMapWidth, (goldWS.z / WorldMapHeight) * MiniMapHeight, 0.0f);
+        return new Vector3((position.x / worldMapWidth) * miniMapWidth, (position.z / worldMapHeight) * miniMapHeight, 0.0f);
     }
+
+    //public void GoldFound(Vector3 position)
+    //{
+    //    foreach (Transform gold in GameStates.instance.GetSelectedGoldList())
+    //    {
+    //        if(gold.position == FromWorldToMiniMapSpace(position))
+    //        {
+    //            Destroy(gold);
+    //        }
+    //    }
+    //}
+
+    //public GameObject CreateGoldIcon(Vector3 position)
+    //{
+    //    GameObject newGoldIcon = Instantiate(goldIconPrefab, position, Quaternion.identity, iconParent.transform);
+    //    goldIconList.Add(newGoldIcon);
+    //    return newGoldIcon;
+    //}
 }
