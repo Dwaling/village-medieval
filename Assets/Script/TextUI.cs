@@ -16,18 +16,18 @@ public class TextUI : MonoBehaviour
 
     void Update()
     {
-        timer = (int)GameStates.timeRemaining;
+        timer = (int)GameStates.instance.timeRemaining;
 
-        if(GameStates.timeRemaining == 1200.0f)
+        if(GameStates.instance.timeRemaining == 1200.0f)
         {
             timeText.text = "∞" ;
-            goldText.text = GameStates.goldRemaining + "/" + GameStates.numberOfGold;
+            goldText.text = GameStates.instance.goldRemaining + "/" + GameStates.instance.numberOfGold;
 
         }
         else
         {
             timeText.text = timer / 60 + ":" + timer % 60;
-            goldText.text = GameStates.goldRemaining + "/" + GameStates.numberOfGold;
+            goldText.text = GameStates.instance.goldRemaining + "/" + GameStates.instance.numberOfGold;
         }
         
 

@@ -8,15 +8,17 @@ public class GameStates : MonoBehaviour
 {
     public static GameStates instance;
     private StatsData currentGameStats = new StatsData();
-    public static float timeForSearching = 120.0f;
-    public static float timeRemaining = timeForSearching;
-    public static int numberOfGold = 5;
-    public static int goldRemaining = numberOfGold;
-    private GameObject player;
+    public float timeForSearching = 120.0f;
+    public float timeRemaining = 120.0f;
+    public int numberOfGold = 5;
+    public int goldRemaining = 5;
+    [SerializeField]
+    GameObject player;
     public static Vector3 playerPosition;
     Vector3 goldPosition;
     public GameObject goldPrefab;
-    public GameObject goldSpawnPoints; 
+    [SerializeField]
+    GameObject goldSpawnPoints; 
     List<Transform> allSpawnPoints = new List<Transform>(); 
     public static List<Transform> randomSelectedGoldList = new List<Transform>();
     public static bool isWinMusicAlreadyPlayed = false;
@@ -24,7 +26,7 @@ public class GameStates : MonoBehaviour
     public static bool isGameOver;
     public static bool isGameStarted = false;
     public GameObject EndGamePanel;
-    public bool isGamePaused;
+    bool isGamePaused;
     private bool isGoldFound;
     private int score;
     [SerializeField]
@@ -37,7 +39,8 @@ public class GameStates : MonoBehaviour
     Text endGameGoldText;
     [SerializeField]
     Minimap miniMap;
-    //private Text scoreText;
+    [SerializeField]
+    Text userRankingName;
     public GameObject background;
     public GameObject newRecordPanel;
     [SerializeField]
@@ -45,6 +48,8 @@ public class GameStates : MonoBehaviour
     [SerializeField]
     public GameObject canvasHUD;
     List<GameObject> golds;
+    static Vector3 playerStartPosition;
+    static Quaternion playerStartRotation;
 
     void Awake()
     {
@@ -61,9 +66,12 @@ public class GameStates : MonoBehaviour
     void Start()
     {
         isGameOver = false;  
-        player = GameObject.Find("FPSController");
         Cursor.visible = true;
         golds = new List<GameObject>();
+        timeRemaining = timeForSearching;
+        goldRemaining = numberOfGold;
+        playerStartPosition = player.transform.position;
+        playerStartRotation = player.transform.rotation;
     }
 
     void Update()
@@ -92,11 +100,11 @@ public class GameStates : MonoBehaviour
 
                 if (isGamePaused)
                 {
-                    GameObject.Find("FPSController").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;   
+                    player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
                 }
                 else
                 {
-                    GameObject.Find("FPSController").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
+                    player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
                 }
 
                 if(isGoldFound)
@@ -158,7 +166,6 @@ public class GameStates : MonoBehaviour
                     isGamePaused = true;
                     isGameStarted = false;
                     
-                   
                     ++currentGameStats.nbGameLost;
                     currentGameStats = GameTimeChoice(currentGameStats);
                     currentGameStats = GameGoldNb(currentGameStats);
@@ -173,16 +180,49 @@ public class GameStates : MonoBehaviour
 
         else
         {
-            GameObject.Find("FPSController").GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+            player.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             canvasMain.GetComponent<MainMenu>().SetIsCursorLocked(false);
+        }
+    }
+
+    public void ResetGame()
+    {
+        player.transform.position = playerStartPosition;
+        player.transform.rotation = playerStartRotation;
+        ResetCurrentGameStats();
+
+        isGameStarted = false;
+        isWinMusicAlreadyPlayed = false;
+        isGameOver = false;
+        isTimeUp = false;
+        score = 0;
+        miniMap.SetIsAlreadyInit(false);
+        randomSelectedGoldList.Clear();
+        timeRemaining = timeForSearching;
+        goldRemaining = numberOfGold;
+
+        if (golds.Count > 0)
+        {
+            int i = 0;
+            while (golds.Count > i)
+            {
+                if(golds[i] != null)
+                {
+                    Destroy(golds[i].GetComponent<Destroy>().GetGoldIcon());
+                    Destroy(golds[i]);
+                    golds.Remove(golds[i]);
+                }
+                i++;
+            }
+            golds = new List<GameObject>();
         }
     }
 
     private void EndGameScore()
     {
         endGameScoreText.text = score.ToString();
-        endGameTimeText.text = (Mathf.Floor(timeForSearching - timeRemaining)).ToString() + "Sec.";
-        endGameGoldText.text = (numberOfGold - goldRemaining).ToString();
+        endGameTimeText.text = (Mathf.Floor(timeForSearching - timeRemaining)).ToString();
+        endGameGoldText.text = (numberOfGold - goldRemaining).ToString() + "/" + numberOfGold.ToString();
     }
     
     public void GoFromEndGamePanelToNextPanel()
@@ -190,15 +230,12 @@ public class GameStates : MonoBehaviour
         if (RankingManager.instance.IsItNewRecord(score) && !isTimeUp) // Si c'est un nouveau record et que tout le temps n'est pas ecoulé 
         {
             newRecordPanel.SetActive(true); // On va au newRecord Panel 
-          
         }
         else   // Sinon, on va au Main menu
         {
             canvasMain.transform.GetChild(1).gameObject.SetActive(true); // Active MainMenu panel   
             canvasMain.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true); // Active main menu addition
-            // TODO Reloadscene et/ou ResetGameStates
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            ResetGame();
         }
     }
 
@@ -232,11 +269,12 @@ public class GameStates : MonoBehaviour
 
    public void GoldSpawn()
     {
-        goldSpawnPoints = GameObject.Find("goldSpawnPoints");
-
-        foreach (Transform child in goldSpawnPoints.transform)
+        if(allSpawnPoints.Count != goldSpawnPoints.transform.childCount)
         {
-            allSpawnPoints.Add(child);
+            foreach (Transform child in goldSpawnPoints.transform)
+            {
+                allSpawnPoints.Add(child);
+            }
         }
 
         for (int i = 0; i < numberOfGold; i++)
@@ -249,10 +287,7 @@ public class GameStates : MonoBehaviour
         foreach (var items in randomSelectedGoldList)
         {
             GameObject gold = Instantiate(goldPrefab, items.transform);
-
             golds.Add(gold);
-           // gold.GetComponent<Destroy>().goldIcon = miniMap.CreateGoldIcon(items.transform.position);
-
         }
     }
 
@@ -334,6 +369,16 @@ public class GameStates : MonoBehaviour
     public List<GameObject> GetGoldList()
     {
         return golds;
+    }
+
+    public bool GetIsGamePaused()
+    {
+        return isGamePaused;
+    }
+
+    public void SetIsGamePaused(bool gamePause)
+    {
+        isGamePaused = gamePause;
     }
 }
 

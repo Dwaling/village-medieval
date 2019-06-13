@@ -40,7 +40,7 @@ public class Minimap : MonoBehaviour
                 {
                     GameObject newGoldIcon = Instantiate(goldIconPrefab, gold.transform.position, Quaternion.identity, iconParent.transform);
                     newGoldIcon.transform.position = FromWorldToMiniMapSpace(newGoldIcon.transform.position) + gameObject.transform.position;
-                    gold.GetComponent<Destroy>().goldIcon = newGoldIcon;
+                    gold.GetComponent<Destroy>().SetGoldIcon(newGoldIcon);
                     goldIconList.Add(newGoldIcon);
                 }
             }
@@ -54,21 +54,8 @@ public class Minimap : MonoBehaviour
         return new Vector3((position.x / worldMapWidth) * miniMapWidth, (position.z / worldMapHeight) * miniMapHeight, 0.0f);
     }
 
-    //public void GoldFound(Vector3 position)
-    //{
-    //    foreach (Transform gold in GameStates.instance.GetSelectedGoldList())
-    //    {
-    //        if(gold.position == FromWorldToMiniMapSpace(position))
-    //        {
-    //            Destroy(gold);
-    //        }
-    //    }
-    //}
-
-    //public GameObject CreateGoldIcon(Vector3 position)
-    //{
-    //    GameObject newGoldIcon = Instantiate(goldIconPrefab, position, Quaternion.identity, iconParent.transform);
-    //    goldIconList.Add(newGoldIcon);
-    //    return newGoldIcon;
-    //}
+    public void SetIsAlreadyInit(bool setInit)
+    {
+        isAlreadyInit = setInit;
+    }
 }

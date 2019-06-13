@@ -9,7 +9,8 @@ public class MainMenu : MonoBehaviour
     private bool isFromMainMenu;
     public GameObject CanvasObject;
     bool isCursorLocked;
-    public GameObject inputField;
+    [SerializeField]
+    Text inputName;
     private int[] goldNum = { 1, 3, 5, 10 };
     string[] gameDuration = { "30 sec", "60 sec", "2 min", "5 min", "illimité" };
     float[] gameDurationValue = { 30.0f, 60.0f, 120.0f, 300.0f, 1200.0f };
@@ -20,13 +21,13 @@ public class MainMenu : MonoBehaviour
     {
         CanvasObject.SetActive(false);
         SetIsCursorLocked(false);
-        goldSelectorText.text = GameStates.numberOfGold.ToString();
+        goldSelectorText.text = GameStates.instance.numberOfGold.ToString();
         timeSelectorText.text = gameDuration[2];
     }
 
     void Update()
     {
-        if(!GameStates.instance.isGamePaused)
+        if(!GameStates.instance.GetIsGamePaused())
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -35,13 +36,13 @@ public class MainMenu : MonoBehaviour
                     if (!isCursorLocked)
                     {
                         SetIsCursorLocked(true);
-                        GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = false;
+                        GameStates.instance.SetIsGamePaused(false);
                         CanvasObject.SetActive(false);
                     }
                     else if (isCursorLocked)
                     {
                         SetIsCursorLocked(false);
-                        GameObject.Find("GameState").GetComponent<GameStates>().isGamePaused = true;
+                        GameStates.instance.SetIsGamePaused(true);
                         CanvasObject.SetActive(true);
                     }
                 }
@@ -54,14 +55,10 @@ public class MainMenu : MonoBehaviour
         if(!isGameStarted)
         {
             GameStates.isGameStarted = false;
-            GameStates.instance.ResetCurrentGameStats();
-            GameStates.goldRemaining = GameStates.numberOfGold;
-            GameStates.isWinMusicAlreadyPlayed = false;
-            GameStates.isGameOver = false;
-            GameStates.timeRemaining = GameStates.timeForSearching;
+            GameStates.instance.timeRemaining = GameStates.instance.timeForSearching;
+            GameStates.instance.goldRemaining = GameStates.instance.numberOfGold;
         }
-
-        if (isGameStarted)
+        else if (isGameStarted)
         {
             GameStates.isGameStarted = true;
         }
@@ -69,7 +66,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        GameObject.Find("GameState").GetComponent<GameStates>().GoldSpawn();
+        GameStates.instance.GetComponent<GameStates>().GoldSpawn();
         SetIsCursorLocked(true);
     }
 
@@ -85,18 +82,18 @@ public class MainMenu : MonoBehaviour
 
    public void IncreaseNumberOfGold()
     {
-        int currentNumberOfGold = GameStates.numberOfGold;
+        int currentNumberOfGold = GameStates.instance.numberOfGold;
         int index = System.Array.IndexOf(goldNum, currentNumberOfGold);
         index++;
         index = index % 4;
-        GameStates.numberOfGold = goldNum[index];
-        GameStates.goldRemaining = goldNum[index];
-        GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
+        GameStates.instance.numberOfGold = goldNum[index];
+        GameStates.instance.goldRemaining = goldNum[index];
+        GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.instance.numberOfGold.ToString();
     }
 
     public void DecreaseNumberOfGold()
     {
-        int currentNumberOfGold = GameStates.numberOfGold;
+        int currentNumberOfGold = GameStates.instance.numberOfGold;
         int index = System.Array.IndexOf(goldNum, currentNumberOfGold);
 
         index--;
@@ -110,26 +107,26 @@ public class MainMenu : MonoBehaviour
             index = index % goldNum.Length;
         }
 
-        GameStates.numberOfGold = goldNum[index];
-        GameStates.goldRemaining = goldNum[index];
-        GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.numberOfGold.ToString();
+        GameStates.instance.numberOfGold = goldNum[index];
+        GameStates.instance.goldRemaining = goldNum[index];
+        GameObject.Find("numGoldSelector").GetComponent<Text>().text = GameStates.instance.numberOfGold.ToString();
     }
 
 
     public void IncreaseGameDuration()
     {
-        float currentGameDuration = GameStates.timeForSearching;
+        float currentGameDuration = GameStates.instance.timeForSearching;
         int index = System.Array.IndexOf(gameDurationValue, currentGameDuration);
         index++;
         index = index % 5;
-        GameStates.timeForSearching = gameDurationValue[index];
-        GameStates.timeRemaining = gameDurationValue[index];
+        GameStates.instance.timeForSearching = gameDurationValue[index];
+        GameStates.instance.timeRemaining = gameDurationValue[index];
         GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[index];
     }
 
     public void DecreaseGameDuration()
     {
-        float currentGameDuration = GameStates.timeForSearching;
+        float currentGameDuration = GameStates.instance.timeForSearching;
         int index = System.Array.IndexOf(gameDurationValue, currentGameDuration);
 
         index--;
@@ -143,8 +140,8 @@ public class MainMenu : MonoBehaviour
             index = index % gameDurationValue.Length;
         }
 
-        GameStates.timeForSearching = gameDurationValue[index];
-        GameStates.timeRemaining = gameDurationValue[index];
+        GameStates.instance.timeForSearching = gameDurationValue[index];
+        GameStates.instance.timeRemaining = gameDurationValue[index];
         GameObject.Find("gameDurationSelector").GetComponent<Text>().text = gameDuration[index];
     }
 
@@ -178,9 +175,9 @@ public class MainMenu : MonoBehaviour
     {
         if (RankingManager.instance.IsItNewRecord(GameStates.instance.GetScore()))
         {
-            string name = inputField.transform.GetChild(0).GetComponent<Text>().text;
-            RankingManager.instance.AddNewRecord(name, GameStates.instance.GetScore());
+            RankingManager.instance.AddNewRecord(inputName.text, GameStates.instance.GetScore());
             RankingManager.instance.SaveRankingData();
+            RankingManager.instance.EmptyRankingItem();
             RankingManager.instance.PopulateRanking();
         }
 

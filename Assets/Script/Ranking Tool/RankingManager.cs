@@ -59,6 +59,14 @@ public class RankingManager : MonoBehaviour
         }
     }
 
+    public void EmptyRankingItem()
+    {
+        foreach(Transform child in scrollRect.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     public void PopulateRanking()
     {
         for(int i = 0; i < rankinglist.Count; i++)
@@ -86,11 +94,13 @@ public class RankingManager : MonoBehaviour
         RankingItem newRecord = new RankingItem();
         newRecord.name = name;
         newRecord.score = score;
+        bool isNewrecordAdded = false;
         for (int i = 0; i < rankinglist.Count; i++)
         {
-            if (rankinglist[i].score < score)
+            if (rankinglist[i].score < score && !isNewrecordAdded)
             {
                 rankinglist.Insert(i, newRecord);
+                isNewrecordAdded = true;
             }
         }
 
@@ -102,15 +112,21 @@ public class RankingManager : MonoBehaviour
 
     public void SaveRankingData()
     {
-        for (int i = 0; i < rankinglist.Count; i++)
+
+        string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
+        RankingItem[] rankingItems = new RankingItem[rankingData.items.Length + 1];
+        for(int i = 0; i < rankingItems.Length; i++)
         {
-            rankingData.items[i] = rankinglist[i];
+            rankingItems[i] = rankinglist[i];
         }
+
+        rankingData.items = rankingItems;
 
         if (!string.IsNullOrEmpty(fileName))
         {
             string dataAsJson = JsonUtility.ToJson(rankingData);
-            File.WriteAllText(fileName, dataAsJson);
+            File.WriteAllText(filePath, dataAsJson);
+            Debug.Log(dataAsJson);
         }
     }
 

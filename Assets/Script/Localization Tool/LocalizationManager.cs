@@ -29,20 +29,6 @@ public class LocalizationManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        //if (forceLanguage)
-        //{
-        //    string langFile = "";
-        //    foreach (Language lang in languages)
-        //    {
-        //        if (lang.languageName == forcedLanguage)
-        //        {
-        //            langFile = lang.fileName;
-        //            langFile = lang.languageName;
-        //        }
-        //    }
-        //    LoadLocalizedText(langFile);
-        //}
-        //else 
         if (Application.systemLanguage == SystemLanguage.French)
         {
             string frenchLangFile = "";

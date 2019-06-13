@@ -8,8 +8,8 @@ public class LooseMenu : MonoBehaviour
     public void ReplayPlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        GameStates.timeRemaining = GameStates.timeForSearching;
-        GameStates.goldRemaining = GameStates.numberOfGold;
+        GameStates.instance.timeRemaining = GameStates.instance.timeForSearching;
+        GameStates.instance.goldRemaining = GameStates.instance.numberOfGold;
         GameStates.isWinMusicAlreadyPlayed = false;
         GameStates.isGameStarted = true;
         GameStates.isGameOver = false;
